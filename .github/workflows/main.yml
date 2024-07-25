@@ -45,6 +45,8 @@ jobs:
       run: pip install -r requirements/test_requirements.txt
     - name: Test with pytest
       run: pytest
+    - name: Install pylint dependencies
+      run: pip install pylint
     - name: Linting with pylint
       run: pylint
 
