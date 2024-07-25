@@ -31,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-    continue-on-error: true 
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -49,13 +48,15 @@ jobs:
     - name: Install pylint dependencies
       run: pip install pylint
     - name: Linting with pylint
-      run: pylint
+      run: find . -name '*.py' -exec pylint {} \;
 
   build:
     needs: [train, test]
+    if: always()
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+    continue-on-error: true 
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
