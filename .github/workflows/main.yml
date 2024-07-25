@@ -79,6 +79,7 @@ jobs:
 
   push-image:
     needs: [train, test, build]
+    if: always()
     runs-on: ubuntu-latest
     steps:
     - name: Repo Checkout
