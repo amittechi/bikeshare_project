@@ -18,7 +18,7 @@ REQUIRES_PYTHON = ">=3.7.0"
 # Except, perhaps the License and Trove Classifiers!
 # Trove Classifiers: https://pypi.org/classifiers/
 
-long_description = DESCRIPTION
+LONG_DESCRIPTION = "This is bikeshare regression model package that is user in model serving"
 
 # Load the package's VERSION file as a dictionary.
 about = {}
@@ -41,7 +41,7 @@ setup(
     name=NAME,
     version=about["__version__"],
     description=DESCRIPTION,
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     author=AUTHOR,
     author_email=EMAIL,
