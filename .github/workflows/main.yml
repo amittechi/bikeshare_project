@@ -45,10 +45,15 @@ jobs:
       run: pip install -r requirements/test_requirements.txt
     - name: Test with pytest
       run: pytest
-    - name: Install pylint dependencies
-      run: pip install pylint
+    - name: Install pylint & black dependencies
+      run: pip install pylint black
+    - name: Formatting with black
+      run: |
+        black . ./bikeshare_model ./bikeshare_model_api ./tests
     - name: Linting with pylint
-      run: find . -name '*.py' -exec pylint {} \;
+      run: |
+        find . -path "./bikeshare_model" -o -path "./bikeshare_model_api" -o -path "./tests" -o -name "*.py" \
+        -not -name "__init__.py" -exec pylint {} +
 
   build:
     needs: [train, test]
