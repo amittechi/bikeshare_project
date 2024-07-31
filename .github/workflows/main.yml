@@ -125,6 +125,9 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_USER_NAME }}
         run: sudo docker pull $DOCKER_USER/bikeshare-fastapi:latest
     
+      - name: Stop previous Docker Container
+        run: sudo docker stop bikeshare-fastapi-container || true
+
       - name: Delete Old Docker Container
         run: sudo docker rm -f bikeshare-fastapi-container || true
     
